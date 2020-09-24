@@ -11,7 +11,7 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
         format: 'IMAGE/GEOTIFF',
         gridoffsets: '.000045,.000045',
         gridbasecrs: 'EPSG:4326',
-        connectid: 'eb33ba21-1782-4ffc-8a5c-4854e21effb9'
+        connectid: '<connectid>'
     },
 
     options: {

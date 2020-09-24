@@ -15,6 +15,8 @@ from .views import *
 from geoq.maps.views import feature_delete
 from geoq.core.views import batch_create_aois, usng, mgrs, ipaws, prioritize_cells
 
+from .ontoquery import retrieve_features
+
 urlpatterns = [
     path('', Dashboard.as_view(), name='home'),
 
@@ -52,6 +54,9 @@ urlpatterns = [
     path('jobs/<int:job_pk>/job-summary/',
         login_required(SummaryView.as_view()),
         name='job-summary'),
+    path('jobs/<int:job_pk>/job-create-vocabulary',
+        login_required(VocabularyView.as_view()),
+        name='job-create-vocabulary'),
     path('jobs/<int:pk>/',
         JobDetailedListView.as_view(template_name='core/job_detail.html'),
         name='job-detail'),
@@ -127,6 +132,7 @@ urlpatterns = [
     path('aois/deleter/<int:pk>/', login_required( aoi_delete ), name='aoi-deleter'),
 
     path('features/delete/<int:pk>/', login_required( feature_delete ), name='feature-delete'),
+    path('features/list/<int:pk>/', login_required( retrieve_features ), name='retrieve-features'),
 
     # Report Pages
     path('reports/work/<int:job_pk>/', login_required(WorkSummaryView.as_view()), name='work-summary'),

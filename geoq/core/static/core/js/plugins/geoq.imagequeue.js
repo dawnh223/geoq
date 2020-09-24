@@ -121,7 +121,7 @@ imagequeue.schema = [
     {name: 'niirs', title: 'niirs', query_filter: {id: 'niirs', field: 'DigitalGlobe:niirs', label: 'NIIRS', type: 'double', operators: imagequeue.ops} }
 ];
 
-imagequeue.url_template = 'https://evwhs.digitalglobe.com/catalogservice/wfsaccess?connectid=eb33ba21-1782-4ffc-8a5c-4854e21effb9&service=wfs&version=1.1.0&request=GetFeature&typeName=FinishedFeature&BBOX={{bounds}}';
+imagequeue.url_template = 'https://evwhs.digitalglobe.com/catalogservice/wfsaccess?connectid=<connectid>&service=wfs&version=1.1.0&request=GetFeature&typeName=FinishedFeature&BBOX={{bounds}}';
 //imagequeue.url_template = 'http://server.com/arcgis/rest/services/ImageEvents/MapServer/req_{{layer}}/query?&geometry={{bounds}}&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects&outFields=*&outSR=4326&f=json';
 imagequeue.layerList = "1, 2, 3".split(', ');
 imagequeue.layerNames = "Ground, Links, Sky".split(', ');
@@ -494,7 +494,7 @@ imagequeue.updateFootprintDataFromWFSServer = function () {
         version: "1.1.0",
         request: "GetFeature",
         typeName: "FinishedFeature",
-        connectid: "eb33ba21-1782-4ffc-8a5c-4854e21effb9"
+        connectid: "<connectid>s"
     };
     var callback = function (xml,lang) {
         var $xml = $(xml);
